@@ -1,8 +1,8 @@
-qqwing.exe --compact --generate > demo1.txt
+qqwing.exe --compact --generate --difficulty expert > demo1.txt
 timeout /T 1
-qqwing.exe --compact --generate > demo2.txt
+qqwing.exe --compact --generate --difficulty expert > demo2.txt
 timeout /T 1
-qqwing.exe --compact --generate > demo3.txt
+qqwing.exe --compact --generate --difficulty expert > demo3.txt
 timeout /T 1
 qqwing.exe --compact --generate > demo4.txt
 timeout /T 1

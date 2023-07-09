@@ -3,38 +3,35 @@ package main;
 import sudoku.Sudoku;
 import sudoku.SudokuSolver;
 
+/**
+ * Link: https://codegolf.stackexchange.com/questions/190727/the-fastest-sudoku-solver
+ */
+
 public class Main {
 
 	public static void main(String[] args) {
 
-//		for (int num = 0; num < 10; num++) {
-//			
-//			Sudoku s = new Sudoku();
-//			boolean ret = s.load("res/sudoku/demo" + num + ".txt");
-//			
-//			if (!ret)
-//				System.out.println("Failed to load Sudoku");
-//			
-//			s.print();
-//			System.out.println("Sudoku Valid: " + s.check());
-//		
-//		}
-
-		Sudoku s = new Sudoku();
+		Sudoku sudoku = new Sudoku();
+		SudokuSolver solver = new SudokuSolver();
 		
-		if (!s.load("res/sudoku/demo0.txt"))
+		if (!sudoku.load("res/sudoku/demo10.txt"))
 			System.out.println("Failed to load Sudoku");
 
-		s.print();
-		System.out.println("Sudoku Valid: " + s.check());
+		sudoku.print();
 		
-		
+		if (!sudoku.check()) {			
+			System.out.println("Sudoku is invalid!");
+			return;
+		}
+
 		long startTime = System.nanoTime();
-		SudokuSolver solver = new SudokuSolver();
-		solver.solve(s);
+		solver.solve(sudoku);
 		long time = System.nanoTime() - startTime;
-		System.out.println("Solver took " + (time / 1000000) + "ms");	
-		s.print();
+
+		System.out.println();
+		sudoku.print();
+		System.out.println();
+		System.out.println("Solver took " + ((float) time / 1000000) + "ms");	
 
 	}
 
