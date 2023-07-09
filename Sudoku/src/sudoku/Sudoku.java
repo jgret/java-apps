@@ -153,6 +153,48 @@ public class Sudoku {
 		return check;
 	}
 	
+	public boolean check(int pRow, int pCol) {
+		
+		
+		char num = fields[pRow][pCol];
+		int count = 0;
+		
+		// check line
+		for (int col = 0; col < 9; col++) {
+			if (fields[pRow][col] == num)
+				count++;
+		}
+
+		if (count > 1)
+			return false;
+		
+		
+		// check col
+		count = 0;
+		for (int row = 0; row < 9; row++) {
+			if (fields[row][pCol] == num)
+				count++;
+		}
+
+		if (count > 1)
+			return false;
+		
+		int rowOffset = (pRow / 3) * 3;
+		int colOffset = (pCol / 3) * 3;
+		
+		// check field
+		count = 0;
+		for (int j = 0; j < 9; j++) {
+			if (fields[rowOffset + (j / 3)][colOffset + (j % 3)] == num)
+				count++;
+		}
+
+		if (count > 1)
+			return false;
+		
+		return true;
+	}
+	
 	public void print() {
 		for (int row = 0; row < 9; row++) {
 			for (int col = 0; col < 9; col++) {

@@ -5,7 +5,7 @@ public class SudokuSolver {
 	
 	private boolean recSolve(Sudoku s, int idx) {
 		
-		if (idx > 81)
+		if (idx >= 81)
 			return true;
 		
 		int row = idx / 9;
@@ -21,7 +21,7 @@ public class SudokuSolver {
 				// try number
 				s.set(row, col, num);
 				
-				if (s.check()) { // if it works, try next field
+				if (s.check(row, col)) { // if it works, try next field
 					
 					done = recSolve(s, idx + 1);
 					if (done)

@@ -22,7 +22,7 @@ public class Main {
 
 		Sudoku s = new Sudoku();
 		
-		if (!s.load("res/sudoku/hardest.txt"))
+		if (!s.load("res/sudoku/demo0.txt"))
 			System.out.println("Failed to load Sudoku");
 
 		s.print();
